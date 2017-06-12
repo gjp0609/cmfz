@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.AdminDao">
+
+    <select id="selectAdmin" resultType="com.baizhi.entity.Admin">
+        SELECT
+            id,
+            name      username,
+            real_name realName,
+            password,
+            salt
+        FROM cmfz.t_admin
+        WHERE name = #{username}
+    </select>
+
+    <insert id="insertAdmin">
+        INSERT INTO cmfz.t_admin (id, name, real_name, password, salt)
+        VALUES (#{id}, #{username}, #{realName}, #{password}, #{salt})
+    </insert>
+
+    <update id="updateAdmin">
+        UPDATE cmfz.t_admin
+        <set>
+            <if test="username!=null">name = #{username}</if>
+            <if test="realName!=null">real_name = #{realName}</if>
+            <if test="password!=null">password = #{password}</if>
+            <if test="salt!=null">salt = #{salt}</if>
+        </set>
+        <where>id = #{id}</where>
+    </update>
+
+    <delete id="deleteAdmin">
+        DELETE FROM cmfz.t_admin
+        WHERE id = #{id}
+    </delete>
+</mapper>
