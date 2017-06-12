@@ -32,4 +32,14 @@ class CommonTest {
         val decode = URLDecoder.decode(encode, "utf-8")
         println(decode)
     }
+
+    @Test
+    fun getUUID() {
+        var i = 0
+        while (i < 10) {
+            val uuid = UUID.randomUUID().toString().replace("-", "")
+            println(uuid)
+            i++
+        }
+    }
 }

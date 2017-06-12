@@ -21,7 +21,7 @@
     <!-- sqlSessionFactory -->
     <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="ds"/>
-        <property name="mapperLocations" value="classpath:mappers/AdminDaoMapper.xml"/>
+        <property name="mapperLocations" value="classpath:mappers/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.baizhi.dao"/>
     </bean>
 
