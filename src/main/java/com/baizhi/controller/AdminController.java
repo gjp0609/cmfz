@@ -14,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
- * admin
+ * admin controller
  * Created by gjp06 on 17.6.12.
  */
 @Controller("adminController")
@@ -42,7 +42,6 @@ public class AdminController {
                 cookie.setPath("/");
                 cookie.setMaxAge(60 * 60 * 24 * 30);
                 response.addCookie(cookie);
-//                System.out.println("saved");
             }
             // save admin in session
             session.setAttribute("admin", dbAdmin);

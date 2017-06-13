@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%
+    // get admin from session
     Object ad = pageContext.getSession().getAttribute("admin");
     if (ad != null) {
         Admin admin = (Admin) ad;
@@ -10,7 +11,6 @@
         pageContext.setAttribute("realName", realName);
     }
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -19,19 +19,24 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/themes/IconExtension.css"/>">
     <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/jquery.easyui.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/datagrid-detailview.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
     <script type="text/javascript">
+        // 菜单 --------------------------------------------------------------
         $(function () {
+            // get all menus
             $.get("<c:url value="/menu/getMenus"/>", "", function (objs) {
                 for (var i = 0; i < objs.length; i++) {
                     var sonMenus = objs[i].sonMenus;
                     var cont = "";
                     for (var j = 0; j < sonMenus.length; j++) {
-                        cont = cont + "<a class='easyui-linkbutton' href='" + sonMenus[j].url + "' ";
-                        cont = cont + "data-options=\"iconCls:'icon-" + sonMenus[j].icon + "'\">";
-                        cont = cont + sonMenus[j].text;
-                        cont = cont + "</a><br/>";
+                        cont += "<a class=\"easyui-linkbutton\" ";
+                        cont += "href=\"javascript:void(0)\" ";
+                        cont += "onclick=\"openTab(" + sonMenus[j].url + ")\" ";
+                        cont += "data-options=\"iconCls:'icon-" + sonMenus[j].icon + "', width:'100%'\">";
+                        cont += sonMenus[j].text;
+                        cont += "</a><br/>";
                     }
-                    console.log(cont);
                     $("#aa").accordion("add", {
                         title: objs[i].text,
                         content: cont,
@@ -39,13 +44,14 @@
                         iconCls: "icon-" + objs[i].icon
                     });
                 }
-
-
             }, "json");
-
         });
+
+        // 轮播图 ------------------------------------------------------------
+        function openTab(url) {
+            console.log(""+url);
+        }
     </script>
-    <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
 
 </head>
 <body class="easyui-layout">

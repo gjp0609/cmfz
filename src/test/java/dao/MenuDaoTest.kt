@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext
 /**
  * Created by gjp06 on 17.6.12.
  */
+
 class MenuDaoTest {
     @Test
     fun query() {
@@ -19,3 +20,4 @@ class MenuDaoTest {
         }
     }
 }
+
