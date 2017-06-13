@@ -22,6 +22,7 @@
     <script type="text/javascript" src="<c:url value="/js/datagrid-detailview.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
     <script type="text/javascript">
+
         // 菜单 --------------------------------------------------------------
         $(function () {
             // get all menus
@@ -30,9 +31,14 @@
                     var sonMenus = objs[i].sonMenus;
                     var cont = "";
                     for (var j = 0; j < sonMenus.length; j++) {
+                        var item = {
+                            "title": sonMenus[j].text,
+                            "url": sonMenus[j].url,
+                            "icon": sonMenus[j].icon
+                        };
                         cont += "<a class=\"easyui-linkbutton\" ";
                         cont += "href=\"javascript:void(0)\" ";
-                        cont += "onclick=\"openTab(" + sonMenus[j].url + ")\" ";
+                        cont += "onclick=\"openTab(" + item + ")\" ";
                         cont += "data-options=\"iconCls:'icon-" + sonMenus[j].icon + "', width:'100%'\">";
                         cont += sonMenus[j].text;
                         cont += "</a><br/>";
@@ -46,10 +52,31 @@
                 }
             }, "json");
         });
-
+        tt = $("#tt");
         // 轮播图 ------------------------------------------------------------
-        function openTab(url) {
-            console.log(""+url);
+        function slideImage() {
+            var slideImage = tt.tabs("tabs");
+            console.log(slideImage);
+            tt.tabs("add", {
+                title: 'New Tab',
+                content: 'Tab Body',
+                closable: true,
+                tools: [{
+                    iconCls: 'icon-mini-refresh',
+                    handler: function () {
+                        alert('refresh');
+                    }
+                }]
+            });
+        }
+
+        function openTab(obj) {
+            console.log(obj);
+//            switch (url) {
+//                case "surroundImg":
+//                    slideImage();
+//                    break;
+//            }
         }
     </script>
 

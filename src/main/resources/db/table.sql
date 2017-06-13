@@ -31,12 +31,12 @@ CREATE TABLE t_menu
 DROP TABLE IF EXISTS t_slide_img;
 CREATE TABLE t_slide_img
 (
-  id         VARCHAR(32) NOT NULL,
-  detail     VARCHAR(30),
-  src        VARCHAR(100),
-  createTime DATETIME,
-  status     VARCHAR(1),
-  updateTime DATETIME,
+  id          VARCHAR(32) NOT NULL,
+  detail      VARCHAR(30),
+  src         VARCHAR(100),
+  create_time DATETIME,
+  status      VARCHAR(1),
+  update_time DATETIME,
   PRIMARY KEY (id)
 )
   ENGINE "InnoDB", CHARSET "UTF8";

@@ -39,3 +39,5 @@ SELECT
   S.icon      sicon,
   S.father_id sfather
 FROM t_menu F INNER JOIN t_menu S ON F.id = S.father_id;
+
+
