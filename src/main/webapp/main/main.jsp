@@ -19,13 +19,33 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/themes/IconExtension.css"/>">
     <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/jquery.easyui.min.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
     <script type="text/javascript">
         $(function () {
+            $.get("<c:url value="/menu/getMenus"/>", "", function (objs) {
+                for (var i = 0; i < objs.length; i++) {
+                    var sonMenus = objs[i].sonMenus;
+                    var cont = "";
+                    for (var j = 0; j < sonMenus.length; j++) {
+                        cont = cont + "<a class='easyui-linkbutton' href='" + sonMenus[j].url + "' ";
+                        cont = cont + "data-options=\"iconCls:'icon-" + sonMenus[j].icon + "'\">";
+                        cont = cont + sonMenus[j].text;
+                        cont = cont + "</a><br/>";
+                    }
+                    console.log(cont);
+                    $("#aa").accordion("add", {
+                        title: objs[i].text,
+                        content: cont,
+                        selected: false,
+                        iconCls: "icon-" + objs[i].icon
+                    });
+                }
 
+
+            }, "json");
 
         });
     </script>
+    <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
 
 </head>
 <body class="easyui-layout">
