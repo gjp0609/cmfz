@@ -17,86 +17,105 @@
     <schema id="11" parent="1" name="user"/>
     <schema id="12" parent="1" name="world"/>
     <table id="13" parent="2" name="t_admin"/>
-    <table id="14" parent="2" name="t_menu"/>
-    <table id="15" parent="2" name="t_slide_img"/>
-    <column id="16" parent="13" name="id">
+    <table id="14" parent="2" name="t_lama"/>
+    <table id="15" parent="2" name="t_menu"/>
+    <table id="16" parent="2" name="t_slide_img"/>
+    <column id="17" parent="13" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="17" parent="13" name="name">
+    <column id="18" parent="13" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
     </column>
-    <column id="18" parent="13" name="real_name">
+    <column id="19" parent="13" name="real_name">
       <Position>3</Position>
       <DataType>varchar(30)|0</DataType>
     </column>
-    <column id="19" parent="13" name="password">
+    <column id="20" parent="13" name="password">
       <Position>4</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <column id="20" parent="13" name="salt">
+    <column id="21" parent="13" name="salt">
       <Position>5</Position>
       <DataType>varchar(10)|0</DataType>
     </column>
-    <key id="21" parent="13" name="PRIMARY">
+    <key id="22" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="22" parent="14" name="id">
+    <column id="23" parent="14" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="14" name="text">
+    <column id="24" parent="14" name="lama_name">
       <Position>2</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(30)|0</DataType>
     </column>
-    <column id="24" parent="14" name="url">
+    <column id="25" parent="14" name="src">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="25" parent="14" name="icon">
-      <Position>4</Position>
-      <DataType>varchar(30)|0</DataType>
-    </column>
-    <column id="26" parent="14" name="father_id">
-      <Position>5</Position>
-      <DataType>varchar(32)|0</DataType>
-    </column>
-    <key id="27" parent="14" name="PRIMARY">
+    <key id="26" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="28" parent="15" name="id">
+    <column id="27" parent="15" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="29" parent="15" name="detail">
+    <column id="28" parent="15" name="text">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="29" parent="15" name="url">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="30" parent="15" name="icon">
+      <Position>4</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="31" parent="15" name="father_id">
+      <Position>5</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <key id="32" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="33" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="16" name="detail">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
     </column>
-    <column id="30" parent="15" name="src">
+    <column id="35" parent="16" name="src">
       <Position>3</Position>
       <DataType>varchar(100)|0</DataType>
     </column>
-    <column id="31" parent="15" name="status">
+    <column id="36" parent="16" name="status">
       <Position>5</Position>
       <DataType>varchar(1)|0</DataType>
     </column>
-    <column id="32" parent="15" name="create_time">
+    <column id="37" parent="16" name="create_time">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="33" parent="15" name="update_time">
+    <column id="38" parent="16" name="update_time">
       <Position>6</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <key id="34" parent="15" name="PRIMARY">
+    <key id="39" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

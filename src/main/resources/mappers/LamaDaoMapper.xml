@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.LamaDao">
+
+    <select id="selectLama" resultType="com.baizhi.entity.Lama">
+        SELECT
+        id,
+        lama_name lamaName,
+        src
+        FROM cmfz.t_lama
+        <where>
+            <if test="lama.id!=null">id=#{lama.id}</if>
+        </where>
+        limit ${page.firstRow}, ${page.pageSize}
+    </select>
+    <select id="selectTotalRows" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM cmfz.t_lama
+    </select>
+
+    <insert id="insertLama">
+        INSERT INTO cmfz.t_lama (id, lama_name, src)
+        VALUES (#{id}, #{lamaName}, #{src})
+    </insert>
+
+    <update id="updateLama">
+        UPDATE cmfz.t_lama
+        SET lama_name = #{lamaName}
+        WHERE id = #{id}
+    </update>
+</mapper>

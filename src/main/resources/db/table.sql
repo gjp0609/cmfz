@@ -40,3 +40,13 @@ CREATE TABLE t_slide_img
   PRIMARY KEY (id)
 )
   ENGINE "InnoDB", CHARSET "UTF8";
+
+########################################   t_round_img   ###################################
+DROP TABLE IF EXISTS t_lama;
+CREATE TABLE t_lama
+(
+  id        VARCHAR(32) NOT NULL,
+  lama_name VARCHAR(30),
+  src       VARCHAR(50),
+  PRIMARY KEY (id)
+);
