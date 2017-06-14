@@ -31,14 +31,9 @@
                     var sonMenus = objs[i].sonMenus;
                     var cont = "";
                     for (var j = 0; j < sonMenus.length; j++) {
-                        var item = {
-                            "title": sonMenus[j].text,
-                            "url": sonMenus[j].url,
-                            "icon": sonMenus[j].icon
-                        };
                         cont += "<a class=\"easyui-linkbutton\" ";
                         cont += "href=\"javascript:void(0)\" ";
-                        cont += "onclick=\"openTab(" + item + ")\" ";
+                        cont += "onclick=\"openTab('" + sonMenus[j].text + "','" + sonMenus[j].url + "','" + sonMenus[j].icon + "')\" ";
                         cont += "data-options=\"iconCls:'icon-" + sonMenus[j].icon + "', width:'100%'\">";
                         cont += sonMenus[j].text;
                         cont += "</a><br/>";
@@ -52,31 +47,25 @@
                 }
             }, "json");
         });
-        tt = $("#tt");
-        // 轮播图 ------------------------------------------------------------
-        function slideImage() {
-            var slideImage = tt.tabs("tabs");
-            console.log(slideImage);
-            tt.tabs("add", {
-                title: 'New Tab',
-                content: 'Tab Body',
-                closable: true,
-                tools: [{
-                    iconCls: 'icon-mini-refresh',
-                    handler: function () {
-                        alert('refresh');
-                    }
-                }]
-            });
-        }
 
-        function openTab(obj) {
-            console.log(obj);
-//            switch (url) {
-//                case "surroundImg":
-//                    slideImage();
-//                    break;
-//            }
+        function openTab(text, url, icon) {
+            console.log(text);
+            console.log(url);
+            console.log(icon);
+
+            if ($("#tt").tabs("exists", text)) {
+                $("#tt").tabs("select", text)
+            } else {
+
+                $("#tt").tabs("add", {
+                    title: text,
+                    href: "${pageContext.request.contextPath}" + url,
+                    iconCls: icon,
+                    closable: true,
+                    onLoad: function () {
+                    }
+                });
+            }
         }
     </script>
 

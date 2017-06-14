@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * security utils
@@ -108,5 +109,12 @@ public class SecurityUtils {
         // 生成图片
         g.dispose();
         return img;
+    }
+
+
+    public static String getUUID() {
+        UUID uuid = UUID.randomUUID();
+        String s = uuid.toString();
+        return s.replace("-", "");
     }
 }
