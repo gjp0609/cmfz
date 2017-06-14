@@ -23,7 +23,7 @@
     <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
     <script type="text/javascript">
 
-        // 菜单 --------------------------------------------------------------
+        // menu --------------------------------------------------------------
         $(function () {
             // get all menus
             $.get("<c:url value="/menu/getMenus"/>", "", function (objs) {
@@ -48,24 +48,21 @@
             }, "json");
         });
 
+        // open tab on click a menu item
         function openTab(text, url, icon) {
-            console.log(text);
-            console.log(url);
-            console.log(icon);
-
+            // if tabs exist, open it
             if ($("#tt").tabs("exists", text)) {
-                $("#tt").tabs("select", text)
+                $("#tt").tabs("select", text);
             } else {
-
+                // else add a new one
                 $("#tt").tabs("add", {
                     title: text,
                     href: "${pageContext.request.contextPath}" + url,
-                    iconCls: icon,
-                    closable: true,
-                    onLoad: function () {
-                    }
-                });
+                    iconCls: "icon-" + icon,
+                    closable: true
+                }).tabs("select", text);
             }
+
         }
     </script>
 
@@ -97,5 +94,6 @@
              style="background-image:url(image/shouye.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
     </div>
 </div>
+
 </body>
 </html>

@@ -57,4 +57,14 @@ public class AdminController {
         return "redirect:/login.jsp";
     }
 
+    @RequestMapping("/changePassword")
+    @ResponseBody
+    public String changePassword(Admin admin) {
+        if (admin != null && admin.getUsername() != null) {
+            service.modifyAdmin(admin);
+            return "修改成功";
+        }
+        return "修改失败";
+    }
+
 }

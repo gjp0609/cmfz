@@ -39,7 +39,15 @@ public class AdminServiceImpl implements AdminService {
 
     public void modifyAdmin(Admin admin) {
         if (admin == null) throw new RuntimeException("admin to update is empty");
-        int i = dao.updateAdmin(admin);
+        if (admin.getUsername() == null) throw new RuntimeException("admin to update name is empty");
+        if (admin.getPassword() == null) throw new RuntimeException("admin to update password is empty");
+        Admin dbAdmin = dao.selectAdmin(admin);
+        if (dbAdmin == null) throw new RuntimeException("user not exists");
+        String salt = SecurityUtils.getRandomCode(10);
+        String newPwd = SecurityUtils.getMD5(admin.getPassword() + salt);
+        dbAdmin.setSalt(salt);
+        dbAdmin.setPassword(newPwd);
+        int i = dao.updateAdmin(dbAdmin);
         if (i == 0) throw new RuntimeException("modify admin fail");
     }
 

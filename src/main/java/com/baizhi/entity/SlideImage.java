@@ -11,9 +11,9 @@ public class SlideImage {
     private String id;
     private String detail;
     private String src;
-    @JSONField(format = "yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
     private Date createTime;
-    @JSONField(format = "yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
     private Date updateTime;
     private String status;
 

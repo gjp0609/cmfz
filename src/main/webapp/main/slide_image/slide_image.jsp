@@ -6,7 +6,7 @@
   Time: 15:22
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%--<html>--%>
 <%--<head>--%>
 <%--<title>持名法州主页</title>--%>
@@ -29,7 +29,7 @@
             pageList: [3, 6, 9],
             remoteSort: false,
             singleSelect: true,
-//            nowrap: false,
+            nowrap: false,
             fitColumns: true,
             url: '<c:url value="/sli/queryAll"/>',
             toolbar: [{
@@ -42,11 +42,17 @@
                         height: 200,
                         closed: false,
                         cache: false,
-                        href: "<c:url value="slide_image_add.jsp"/>",
+                        href: "<c:url value="/main/slide_image/slide_image_add.jsp"/>",
                         modal: true,
                         buttons: [{
                             text: '保存',
                             handler: function () {
+                                $.messager.show({
+                                    title: "保存成功",
+                                    msg: "轮播图已添加。",
+                                    timeout: 3000,
+                                    showType: "slide"
+                                });
                                 $("#slide_image_add_form").submit();
                                 $("#slide_image_add_form").form({
                                     success: function () {
@@ -76,7 +82,7 @@
             view: detailview,
             detailFormatter: function (rowIndex, rowData) {
                 return '<table><tr>' +
-                    '<td rowspan=2 style="border:0"><img src="/img/indexImages/' + rowData.src + '" style="height:200px;"></td>' +
+                    '<td rowspan=2 style="border:0"><img src=${pageContext.request.contextPath}/img/indexImages/' + rowData.src + ' style="height:200px;"></td>' +
                     '</tr></table>';
             },
             onLoadSuccess: function () {
@@ -99,7 +105,7 @@
             height: 200,
             closed: false,
             cache: false,
-            href: "<c:url value="slide_image_edit.jsp"/>",
+            href: "<c:url value="/main/slide_image/slide_image_edit.jsp"/>",
             modal: true,
             buttons: [{
                 text: '保存',
@@ -107,6 +113,12 @@
                     $("#slide_image_edit_form").submit();
                     $("#slide_image_edit_form").form({
                         success: function () {
+                            $.messager.show({
+                                title: "保存成功",
+                                msg: "修改已保存。",
+                                timeout: 3000,
+                                showType: "slide"
+                            });
                             $("#slideImageEditDialog").dialog("close");
                             $('#slide_image_datagrid').datagrid("reload");
                         }

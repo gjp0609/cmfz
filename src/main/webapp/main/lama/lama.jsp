@@ -47,6 +47,12 @@
                             $("#lama_add_form").submit();
                             $("#lama_add_form").form({
                                 success: function () {
+                                    $.messager.show({
+                                        title: "保存成功",
+                                        msg: "上师已添加。",
+                                        timeout: 3000,
+                                        showType: "slide"
+                                    });
                                     $("#lama_dialog").dialog("close");
                                     $('#lama_data_grid').datagrid("load");
                                 }
@@ -77,7 +83,6 @@
             "class=\"easyui-linkbutton asd\" data-options=\"iconCls:'icon-edit'\">修改</a>";
     }
 
-
     function lama_edit(id) {
         lamaId = id;
         $("#lama_dialog").dialog({
@@ -94,6 +99,13 @@
                     $("#lama_edit_form").submit();
                     $("#lama_edit_form").form({
                         success: function () {
+                            $.messager.show({
+                                title: "保存成功",
+                                msg: "修改已完成。",
+                                timeout: 3000,
+                                showType: "slide"
+                            });
+
                             $("#lama_dialog").dialog("close");
                             $('#lama_data_grid').datagrid("reload");
                         }
