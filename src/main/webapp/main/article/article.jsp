@@ -88,7 +88,8 @@
             "class=\"easyui-linkbutton asd\" data-options=\"iconCls:'icon-edit'\">修改</a>";
     }
     function article_author_operate(value, row, index) {
-        return row.lama.lamaName;
+        if (row.lama === undefined) return "未知";
+        else return row.lama.lamaName;
     }
 
     function article_detail(idw) {
@@ -106,36 +107,12 @@
         $("#article_dialog").dialog({
             title: '修改',
             width: 850,
-            height: 600,
+            height: 500,
             closed: false,
             cache: false,
             href: "<c:url value="/main/article/article_edit.jsp"/>",
-            modal: true,
-            buttons: [{
-                text: '保存',
-                handler: function () {
-                    $("#article_edit_form").submit().form({
-                        success: function () {
-                            $.messager.show({
-                                title: "保存成功",
-                                msg: "修改已完成。",
-                                timeout: 3000,
-                                showType: "slide"
-                            });
-
-                            $("#article_dialog").dialog("close");
-                            $("#article_data_grid").datagrid("reload");
-                        }
-                    });
-                }
-            }, {
-                text: '关闭',
-                handler: function () {
-                    $("#article_dialog").dialog("close");
-                }
-            }]
+            modal: true
         });
-        console.log(id);
     }
 </script>
 </body>

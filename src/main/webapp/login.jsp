@@ -54,12 +54,13 @@
                     <%
                         String username = null;
                         Cookie[] cookies = request.getCookies();
-                        for (Cookie ck : cookies) {
-                            if (ck.getName().equals("username")) {
-                                username = ck.getValue();
-                                username = URLDecoder.decode(username, "UTF-8");
+                        if (cookies != null)
+                            for (Cookie ck : cookies) {
+                                if (ck.getName().equals("username")) {
+                                    username = ck.getValue();
+                                    username = URLDecoder.decode(username, "UTF-8");
+                                }
                             }
-                        }
                         if (username != null)
                             pageContext.setAttribute("username", username);
                         else

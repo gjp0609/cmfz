@@ -33,8 +33,15 @@
 </head>
 <body>
 
-<form id="article_edit_form" method="post" style="margin: 30px;width: 800px">
+<form id="article_edit_form" method="post" style="margin: 10px;width: 800px">
     <table>
+        <tr>
+            <td>文章编号：</td>
+            <td>
+                <input name="id" title="" readonly
+                       class="easyui-textbox" style="width:300px">
+            </td>
+        </tr>
         <tr>
             <td>文章标题：</td>
             <td>
@@ -45,7 +52,7 @@
         <tr>
             <td>文章作者：</td>
             <td>
-                <input id="cc" title="作者" name="authorId" value="">
+                <input id="cc" title="作者" name="lama.id" value="">
             </td>
         </tr>
         <tr>
@@ -61,7 +68,7 @@
         </tr>
         <tr>
             <td colspan="2" style="width: 100%">
-                <script id="editor" name="content" type="text/plain"></script>
+                <div id="edit_editor" name="content" type="text/plain"></div>
             </td>
         </tr>
         <tr>
@@ -73,24 +80,33 @@
 </form>
 
 <script type="text/javascript">
-    var editor = UE.getEditor('editor');
+    console.log(new Date().getTime());
+
+    UE.delEditor("edit_editor");
+
+    editor = UE.getEditor('edit_editor');
     $("#cc").combobox({
         url: "<c:url value="/lama/getList"/>",
         valueField: 'id',
         textField: 'lamaName'
     });
 
-    $("#article_edit_form").form({
-        url: "<c:url value="/article/add"/>",
-        success: function () {
-            $.messager.show({
-                title: "保存成功",
-                msg: "修改已完成。",
-                timeout: 3000,
-                showType: "slide"
-            });
-        }
-    }).form("load", "<c:url value="/article/queryOne"/>" + articleId);
+    setTimeout(function () {
+        $("#article_edit_form").form({
+            url: "<c:url value="/article/modify"/>",
+            success: function () {
+                $.messager.show({
+                    title: "保存成功",
+                    msg: "修改已完成。",
+                    timeout: 3000,
+                    showType: "slide"
+                });
+            }, onLoadSuccess: function (art) {
+                UE.getEditor('edit_editor').setContent(art.content);
+            }
+        }).form("load", "<c:url value="/article/queryOne?id="/>" + articleId);
+    }, 3000);
+
 
     $("#submit").click(function () {
         $("#article_edit_form").submit();
@@ -99,7 +115,6 @@
     $("#reset").click(function () {
         $("#article_edit_form").form("reset");
     });
-
 </script>
 
 </body>

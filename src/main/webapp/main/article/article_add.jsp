@@ -10,7 +10,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/themes/default/easyui.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/themes/IconExtension.css"/>">
@@ -62,7 +61,7 @@
         </tr>
         <tr>
             <td colspan="2" style="width: 100%">
-                <script id="editor" name="content" type="text/plain"></script>
+                <script id="add_editor" name="content" type="text/plain"></script>
             </td>
         </tr>
         <tr>
@@ -74,7 +73,8 @@
 </form>
 
 <script type="text/javascript">
-    var editor = UE.getEditor('editor');
+    UE.delEditor("add_editor");
+    var editor = UE.getEditor('add_editor');
     $("#cc").combobox({
         url: "<c:url value="/lama/getList"/>",
         valueField: 'id',
@@ -87,16 +87,12 @@
             success: function () {
                 $.messager.show({
                     title: "保存成功",
-                    msg: "修改已完成。",
+                    msg: "添加已完成。",
                     timeout: 3000,
                     showType: "slide"
                 });
             }
         }).submit();
-    });
-
-    $("body").click(function () {
-        console.log($("#qwe").val());
     });
 
 

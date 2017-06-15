@@ -50,7 +50,7 @@
             <if test="lama!=null">
                 <if test="lama.id!=null">author_id = #{lama.id}</if>
             </if>
-            updateTime = sysdate()
+            update_time = sysdate()
         </set>
         WHERE id = #{id}
     </update>
