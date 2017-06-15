@@ -41,3 +41,14 @@ SELECT
 FROM t_menu F INNER JOIN t_menu S ON F.id = S.father_id;
 
 
+SELECT
+  A.id        aid,
+  title,
+  status,
+  content,
+  create_time createTime,
+  update_time updateTime,
+  L.id        lid,
+  lama_name   lamaName
+FROM cmfz.t_article A LEFT JOIN cmfz.t_lama L ON A.author_id = L.id;
+

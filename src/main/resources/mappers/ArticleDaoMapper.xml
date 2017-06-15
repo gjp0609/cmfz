@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.ArticleDao">
+
+    <resultMap id="ArticleRM" type="com.baizhi.entity.Article" autoMapping="true">
+        <id property="id" column="aid"/>
+        <association property="lama" javaType="com.baizhi.entity.Lama" autoMapping="true">
+            <id property="id" column="lid"/>
+            <result property="lamaName" column="lamaName"/>
+        </association>
+    </resultMap>
+
+    <sql id="selectArticle">
+        SELECT
+            A.id        aid,
+            title,
+            status,
+            content,
+            create_time createTime,
+            update_time updateTime,
+            L.id        lid,
+            lama_name   lamaName
+        FROM cmfz.t_article A LEFT JOIN cmfz.t_lama L ON A.author_id = L.id
+    </sql>
+
+    <select id="selectArticle" resultMap="ArticleRM">
+        <include refid="selectArticle"/>
+        <where>
+            <if test="article.id!=null">A.id = #{article.id}</if>
+        </where>
+        limit ${page.firstRow}, ${page.pageSize}
+    </select>
+
+    <select id="selectTotalRows" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM cmfz.t_article
+    </select>
+
+    <insert id="insertArticle">
+        INSERT INTO cmfz.t_article (id, title, status, content, create_time, update_time, author_id)
+        VALUES (#{id}, #{title}, #{status}, #{content}, sysdate(), sysdate(), #{lama.id})
+    </insert>
+
+    <update id="updateArticle">
+        UPDATE cmfz.t_article
+        <set>
+            <if test="title!=null">title = #{title},</if>
+            <if test="status!=null">status = #{status},</if>
+            <if test="content!=null">content = #{content},</if>
+            <if test="lama!=null">
+                <if test="lama.id!=null">author_id = #{lama.id}</if>
+            </if>
+            updateTime = sysdate()
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteArticle">
+        DELETE FROM cmfz.t_article
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

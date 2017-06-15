@@ -50,3 +50,18 @@ CREATE TABLE t_lama
   src       VARCHAR(50),
   PRIMARY KEY (id)
 );
+
+########################################   t_round_img   ###################################
+DROP TABLE IF EXISTS t_article;
+CREATE TABLE t_article
+(
+  id          VARCHAR(32) NOT NULL,
+  title       VARCHAR(30),
+  status      VARCHAR(6),
+  content     VARCHAR(20000),
+  create_time DATETIME,
+  update_time DATETIME,
+  author_id   VARCHAR(32) REFERENCES t_lama (id),
+  PRIMARY KEY (id)
+)
+  ENGINE "InnoDB", CHARSET "UTF8";

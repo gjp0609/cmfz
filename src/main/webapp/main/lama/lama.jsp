@@ -39,7 +39,7 @@
                     height: 200,
                     closed: false,
                     cache: false,
-                    href: "<c:url value="lama_add.jsp"/>",
+                    href: "<c:url value="/main/lama/lama_add.jsp"/>",
                     modal: true,
                     buttons: [{
                         text: '保存',
@@ -71,6 +71,7 @@
             {field: 'id', title: '编号', width: 100},
             {field: 'lamaName', title: '法名', width: 100},
             {field: 'src', title: '头像文件名', width: 100, align: 'right'},
+            {field: 'img', title: '头像展示', width: 100, align: 'right', formatter: lama_img},
             {field: 'operate', title: '操作', width: 60, align: 'center', formatter: lama_operate}
         ]],
         onLoadSuccess: function () {
@@ -81,6 +82,10 @@
     function lama_operate(value, row, index) {
         return "<a href=\"javascript:void(0)\" onclick=\"lama_edit('" + row.id + "')\" " +
             "class=\"easyui-linkbutton asd\" data-options=\"iconCls:'icon-edit'\">修改</a>";
+    }
+
+    function lama_img(value, row, index) {
+        return "<img style='height: 50px' src='/img/lamaImages/" + row.src + "'/>";
     }
 
     function lama_edit(id) {
@@ -96,8 +101,7 @@
             buttons: [{
                 text: '保存',
                 handler: function () {
-                    $("#lama_edit_form").submit();
-                    $("#lama_edit_form").form({
+                    $("#lama_edit_form").submit().form({
                         success: function () {
                             $.messager.show({
                                 title: "保存成功",

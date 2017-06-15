@@ -15,6 +15,11 @@
             <name>Team Nexus Repository</name>
             <url>http://192.168.0.4:8081/nexus/content/groups/public</url>
         </repository>
+        <repository>
+            <id>ali</id>
+            <name>Team Nexus Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -22,6 +27,12 @@
             <id>nexus</id>
             <name>Team Nexus Repository</name>
             <url>http://192.168.0.4:8081/nexus/content/groups/public</url>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>ali</id>
+            <name>Team Nexus Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -234,6 +245,13 @@
             <scope>test</scope>
         </dependency>
         <!-- log end -->
+        
+        <!-- UEditor -->
+        <dependency>
+            <groupId>cn.songxinqiang</groupId>
+            <artifactId>com.baidu.ueditor</artifactId>
+            <version>1.1.2-offical</version>
+        </dependency>
 
     </dependencies>
     <build>

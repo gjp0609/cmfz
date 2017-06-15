@@ -46,6 +46,12 @@ public class LamaController {
         return lamaDTO;
     }
 
+    @RequestMapping("/getList")
+    @ResponseBody
+    public List<Lama> getList() {
+        return service.queryAllLama(new Page(1, 1000));
+    }
+
     @RequestMapping("/queryOne")
     @ResponseBody
     public Lama queryOne(String id) {
