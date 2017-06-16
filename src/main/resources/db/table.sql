@@ -65,3 +65,28 @@ CREATE TABLE t_article
   PRIMARY KEY (id)
 )
   ENGINE "InnoDB", CHARSET "UTF8";
+
+########################################   t_user   ########################################
+DROP TABLE IF EXISTS t_user;
+CREATE TABLE t_user
+(
+  id              VARCHAR(32) NOT NULL,
+  name            VARCHAR(20),
+  fa_name         VARCHAR(30),
+  phone           VARCHAR(11),
+  src             VARCHAR(50),
+  password        VARCHAR(32),
+  salt            VARCHAR(10),
+  sex             VARCHAR(2),
+  status          VARCHAR(2),
+  province        VARCHAR(10),
+  area            VARCHAR(30),
+  sign            VARCHAR(100),
+  email           VARCHAR(30),
+  register_time   DATETIME,
+  last_login_time DATETIME,
+  lama_id         VARCHAR(32) REFERENCES t_lama (id),
+  PRIMARY KEY (id)
+)
+  ENGINE "InnoDB", CHARSET "UTF8";
+

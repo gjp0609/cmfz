@@ -1,8 +1,8 @@
 package com.baizhi.controller;
 
+import com.baizhi.entity.DataDTO;
 import com.baizhi.entity.Page;
 import com.baizhi.entity.SlideImage;
-import com.baizhi.entity.SlideImageDTO;
 import com.baizhi.service.SlideImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +26,13 @@ public class SlideImageController {
 
     @RequestMapping("/queryAll")
     @ResponseBody
-    public SlideImageDTO queryAll(Integer page, Integer rows) {
+    public DataDTO<SlideImage> queryAll(Integer page, Integer rows) {
         Page p = new Page(page, rows);
         List<SlideImage> slideImages = service.queryAllSlideImage(p);
-        SlideImageDTO slideImageDTO = new SlideImageDTO();
-        slideImageDTO.setTotal(p.getTotalRows());
-        slideImageDTO.setRows(slideImages);
-        return slideImageDTO;
+        DataDTO<SlideImage> slideImageDataDTO = new DataDTO<SlideImage>();
+        slideImageDataDTO.setTotal(p.getTotalRows());
+        slideImageDataDTO.setRows(slideImages);
+        return slideImageDataDTO;
     }
 
     @RequestMapping("/queryOne")

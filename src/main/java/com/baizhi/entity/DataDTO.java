@@ -3,15 +3,15 @@ package com.baizhi.entity;
 import java.util.List;
 
 /**
- * Created by gjp06 on 17.6.13.
+ * Created by gjp06 on 17.6.16.
  */
-public class LamaDTO {
+public class DataDTO<T> {
     private int total;
-    private List<Lama> rows;
+    private List<T> rows;
 
     @Override
     public String toString() {
-        return "LamaDTO{" +
+        return "DataDTO{" +
                 "total=" + total +
                 ", rows=" + rows +
                 '}';
@@ -25,11 +25,11 @@ public class LamaDTO {
         this.total = total;
     }
 
-    public List<Lama> getRows() {
+    public List<T> getRows() {
         return rows;
     }
 
-    public void setRows(List<Lama> rows) {
+    public void setRows(List<T> rows) {
         this.rows = rows;
     }
 }

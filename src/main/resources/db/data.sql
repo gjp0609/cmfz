@@ -52,3 +52,25 @@ SELECT
   lama_name   lamaName
 FROM cmfz.t_article A LEFT JOIN cmfz.t_lama L ON A.author_id = L.id;
 
+
+
+SELECT
+  U.id            uid,
+  name,
+  fa_name         faName,
+  phone,
+  U.src           src,
+  password,
+  salt,
+  sex,
+  status,
+  province,
+  area,
+  sign,
+  email,
+  register_time   registerTime,
+  last_login_time lastLoginTime,
+  L.id            lid,
+  lama_name       lamaName,
+  L.src           lsrc
+FROM cmfz.t_user U LEFT JOIN cmfz.t_lama L ON U.lama_id = L.id;

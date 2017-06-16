@@ -45,7 +45,7 @@
         <tr>
             <td>文章作者：</td>
             <td>
-                <input id="cc" title="作者" name="authorId" value="">
+                <input id="cc" title="作者" name="lama.id" value="">
             </td>
         </tr>
         <tr>

@@ -37,13 +37,13 @@ public class LamaController {
 
     @RequestMapping("/queryAll")
     @ResponseBody
-    public LamaDTO queryAll(Integer page, Integer rows) {
+    public DataDTO<Lama> queryAll(Integer page, Integer rows) {
         Page p = new Page(page, rows);
         List<Lama> lamaList = service.queryAllLama(p);
-        LamaDTO lamaDTO = new LamaDTO();
-        lamaDTO.setTotal(p.getTotalRows());
-        lamaDTO.setRows(lamaList);
-        return lamaDTO;
+        DataDTO<Lama> lamaDataDTO = new DataDTO<Lama>();
+        lamaDataDTO.setTotal(p.getTotalRows());
+        lamaDataDTO.setRows(lamaList);
+        return lamaDataDTO;
     }
 
     @RequestMapping("/getList")

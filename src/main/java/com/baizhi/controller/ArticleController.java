@@ -1,7 +1,7 @@
 package com.baizhi.controller;
 
 import com.baizhi.entity.Article;
-import com.baizhi.entity.ArticleDTO;
+import com.baizhi.entity.DataDTO;
 import com.baizhi.entity.Page;
 import com.baizhi.service.ArticleService;
 import org.springframework.stereotype.Controller;
@@ -41,13 +41,13 @@ public class ArticleController {
 
     @RequestMapping("/queryAll")
     @ResponseBody
-    public ArticleDTO queryAll(Integer page, Integer rows) {
+    public DataDTO<Article> queryAll(Integer page, Integer rows) {
         Page p = new Page(page, rows);
         List<Article> articleList = service.queryAllArticle(p);
-        ArticleDTO articleDTO = new ArticleDTO();
-        articleDTO.setTotal(p.getTotalRows());
-        articleDTO.setRows(articleList);
-        return articleDTO;
+        DataDTO<Article> articleDataDTO = new DataDTO<Article>();
+        articleDataDTO.setTotal(p.getTotalRows());
+        articleDataDTO.setRows(articleList);
+        return articleDataDTO;
     }
 
     @RequestMapping("/add")

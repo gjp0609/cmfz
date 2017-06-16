@@ -27,6 +27,10 @@
         url: "<c:url value="/article/queryAll"/>",
         fitColumns: true,
         singleSelect: true,
+//        autoRowHeight: false,
+//        rowStyler: function (index, row) {
+//            return 'line-height:50px;height:50px;';
+//        },
         pagination: true,
         pageSize: 6,
         pageList: [3, 6, 9],

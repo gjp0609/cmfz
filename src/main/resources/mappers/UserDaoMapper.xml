@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.UserDao">
+
+    <sql id="selectUser">
+        SELECT
+            U.id            uid,
+            name,
+            fa_name         faName,
+            phone,
+            U.src           src,
+            password,
+            salt,
+            sex,
+            status,
+            province,
+            area,
+            sign,
+            email,
+            register_time   registerTime,
+            last_login_time lastLoginTime,
+            L.id            lid,
+            lama_name       lamaName,
+            L.src           lsrc
+        FROM cmfz.t_user U LEFT JOIN cmfz.t_lama L ON U.lama_id = L.id
+    </sql>
+
+    <resultMap id="UserRM" type="com.baizhi.entity.User" autoMapping="true">
+        <id property="id" column="uid"/>
+        <association property="lama" javaType="com.baizhi.entity.Lama" autoMapping="true">
+            <id property="id" column="lid"/>
+            <id property="src" column="lsrc"/>
+        </association>
+    </resultMap>
+
+    <select id="selectUser" resultMap="UserRM">
+        <include refid="selectUser"/>
+        <where>
+            <if test="user.id!=null">U.id = #{user.id}</if>
+        </where>
+        limit ${page.firstRow}, ${page.pageSize}
+    </select>
+
+    <select id="selectTotalRows" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM t_user
+    </select>
+
+    <insert id="insertUser">
+        INSERT INTO t_user (id, name, fa_name, phone, src, password, salt, sex, status, province, area, sign,
+                            email, register_time, last_login_time, lama_id)
+        VALUES (#{id}, #{name}, #{faName}, #{phone}, #{src}, #{password}, #{salt}, #{sex}, #{status}, #{province},
+                       #{area}, #{sign}, #{email}, #{registerTime}, #{lastLoginTime}, #{lama})
+    </insert>
+
+    <update id="updateUser">
+        UPDATE t_user
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUser">
+        DELETE FROM t_user
+        WHERE id = #{id}
+    </delete>
+</mapper>
