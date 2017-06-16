@@ -24,6 +24,7 @@ public class UserController {
     @RequestMapping("/queryOne")
     @ResponseBody
     public User queryOne(String id) {
+        System.out.println(id);
         User user = new User();
         user.setId(id);
         return service.queryOneUser(user);
@@ -38,6 +39,12 @@ public class UserController {
         userDataDTO.setTotal(p.getTotalRows());
         userDataDTO.setRows(userList);
         return userDataDTO;
+    }
+
+    @RequestMapping("/modify")
+    @ResponseBody
+    public void modify(User user) {
+        service.modifyUser(user);
     }
 
 }

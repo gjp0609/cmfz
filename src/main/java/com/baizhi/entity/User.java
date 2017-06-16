@@ -1,5 +1,7 @@
 package com.baizhi.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 /**
@@ -19,8 +21,10 @@ public class User {
     private String area;
     private String sign;
     private String email;
+    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
     private Date registerTime;
-    private String lastLoginTime;
+    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    private Date lastLoginTime;
     private Lama lama;
 
     @Override
@@ -157,11 +161,11 @@ public class User {
         this.registerTime = registerTime;
     }
 
-    public String getLastLoginTime() {
+    public Date getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(String lastLoginTime) {
+    public void setLastLoginTime(Date lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 

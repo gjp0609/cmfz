@@ -27,50 +27,9 @@
         url: "<c:url value="/article/queryAll"/>",
         fitColumns: true,
         singleSelect: true,
-//        autoRowHeight: false,
-//        rowStyler: function (index, row) {
-//            return 'line-height:50px;height:50px;';
-//        },
         pagination: true,
         pageSize: 6,
         pageList: [3, 6, 9],
-        toolbar: [{
-            text: "添加",
-            iconCls: 'icon-add',
-            handler: function () {
-                $("#article_dialog").dialog({
-                    title: '添加',
-                    width: 400,
-                    height: 200,
-                    closed: false,
-                    cache: false,
-                    href: "<c:url value="/main/article/article_add.jsp"/>",
-                    modal: true,
-                    buttons: [{
-                        text: '保存',
-                        handler: function () {
-                            $("#article_add_form").submit().form({
-                                success: function () {
-                                    $.messager.show({
-                                        title: "保存成功",
-                                        msg: "上师已添加。",
-                                        timeout: 3000,
-                                        showType: "slide"
-                                    });
-                                    $("#article_dialog").dialog("close");
-                                    $("#article_data_grid").datagrid("load");
-                                }
-                            });
-                        }
-                    }, {
-                        text: '关闭',
-                        handler: function () {
-                            $("#article_dialog").dialog("close");
-                        }
-                    }]
-                });
-            }
-        }],
         columns: [[
             {field: 'id', title: '编号', width: 130, align: 'center'},
             {field: 'title', title: '标题', width: 100},

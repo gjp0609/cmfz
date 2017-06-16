@@ -11,11 +11,12 @@
         pageContext.setAttribute("realName", realName);
     }
 %>
+<!doctype html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>持名法州主页</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/themes/default/easyui.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/themes/black/easyui.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/themes/IconExtension.css"/>">
     <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/jquery.easyui.min.js"/>"></script>
@@ -74,7 +75,7 @@
 
 </head>
 <body class="easyui-layout">
-<div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
+<div data-options="region:'north',split:true" style="height:60px;background-color:  #232323">
     <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px">
         持名法州后台管理系统
     </div>
@@ -84,7 +85,7 @@
         &nbsp;&nbsp;<a href="<c:url value="/admin/logout"/>" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a>
     </div>
 </div>
-<div data-options="region:'south',split:true" style="height: 40px;background: #5C160C">
+<div data-options="region:'south',split:true" style="height: 40px;background: #232323">
     <div style="text-align: center;font-size:15px; color: #FAF7F7;font-family: 楷体">&copy;百知教育 gaozhy@zparkhr.com.cn
     </div>
 </div>
