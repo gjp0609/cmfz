@@ -94,5 +94,6 @@
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="Maven: cn.songxinqiang:com.baidu.ueditor:1.1.2-offical" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20160212" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-maven-allopen:1.1.2-4" level="project" />
   </component>
 </module>

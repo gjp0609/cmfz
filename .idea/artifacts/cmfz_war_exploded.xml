@@ -41,6 +41,7 @@
           <element id="library" level="project" name="Maven: org.jetbrains:annotations:13.0" />
           <element id="library" level="project" name="Maven: cn.songxinqiang:com.baidu.ueditor:1.1.2-offical" />
           <element id="library" level="project" name="Maven: org.json:json:20160212" />
+          <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-maven-allopen:1.1.2-4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

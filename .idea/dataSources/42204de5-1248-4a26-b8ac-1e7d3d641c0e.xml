@@ -116,7 +116,7 @@
     </column>
     <column id="41" parent="16" name="user_id">
       <Position>4</Position>
-      <DataType>varchar(12)|0</DataType>
+      <DataType>varchar(32)|0</DataType>
     </column>
     <key id="42" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

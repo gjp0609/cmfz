@@ -39,6 +39,5 @@ class UserDaoTest {
         val user = User()
         user.id = "12ceb3d57ed44ca5ad76dcbf3718a912"
         println(dao.deleteUser(user))
-
     }
 }
