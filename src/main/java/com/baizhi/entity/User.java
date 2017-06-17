@@ -25,6 +25,7 @@ public class User {
     private Date registerTime;
     @JSONField(format = "yyyy-MM-dd hh:mm:ss")
     private Date lastLoginTime;
+    private String loginRecord;
     private Lama lama;
 
     @Override
@@ -44,9 +45,18 @@ public class User {
                 ", sign='" + sign + '\'' +
                 ", email='" + email + '\'' +
                 ", registerTime=" + registerTime +
-                ", lastLoginTime='" + lastLoginTime + '\'' +
+                ", lastLoginTime=" + lastLoginTime +
+                ", loginRecord='" + loginRecord + '\'' +
                 ", lama=" + lama +
                 '}';
+    }
+
+    public String getLoginRecord() {
+        return loginRecord;
+    }
+
+    public void setLoginRecord(String loginRecord) {
+        this.loginRecord = loginRecord;
     }
 
     public String getStatus() {

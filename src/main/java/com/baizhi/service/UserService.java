@@ -16,4 +16,6 @@ public interface UserService {
 
     public void modifyUser(User user);
 
+    public List<Integer> getChart1();
+
 }

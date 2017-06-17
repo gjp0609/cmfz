@@ -47,4 +47,12 @@ public class UserController {
         service.modifyUser(user);
     }
 
+
+    @RequestMapping(value = "/chart1", produces = "application/json")
+    @ResponseBody
+    public List<Integer> chart1() {
+        List<Integer> list = service.getChart1();
+//        return Arrays.toString(bytes);
+        return list;
+    }
 }

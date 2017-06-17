@@ -10,36 +10,45 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="<c:url value="/main/chart/echarts/echarts.js"/>"></script>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/themes/default/easyui.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/themes/IconExtension.css"/>">
+    <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/jquery.easyui.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/datagrid-detailview.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/echarts.js"/>"></script>
 </head>
 <body>
-<div id="main" style="width: 600px;height:400px;"></div>
+<div id="chart_login" style="width: 100%;height:100%;"></div>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
+    var myChart = echarts.init(document.getElementById('chart_login'));
+    //    require.config
 
-    // 指定图表的配置项和数据
-    var option = {
-        title: {
-            text: 'ECharts 入门示例'
-        },
-        tooltip: {},
-        legend: {
-            data: ['销量']
-        },
-        xAxis: {
-            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-        },
-        yAxis: {},
-        series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
-    };
-
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+    $.get('<c:url value="/user/chart1"/>').done(function (data) {
+        myChart.setOption({
+            title: {
+                text: '年度用户登录统计'
+            },
+            tooltip: {},
+            legend: {
+                data: ['总登陆次数']
+            },
+            xAxis: {
+                data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                    "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+                    "11", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+                    "31", "32", "33", "34", "35", "36", "37", "38", "39", "30",
+                    "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"]
+            },
+            yAxis: {},
+            series: [{
+                name: '总登陆次数',
+                type: 'bar',
+                data: data
+            }]
+        });
+    });
 </script>
 </body>
 </html>

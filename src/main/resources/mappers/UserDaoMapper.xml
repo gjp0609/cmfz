@@ -19,6 +19,7 @@
             email,
             register_time   registerTime,
             last_login_time lastLoginTime,
+            login_record    loginRecord,
             L.id            lid,
             lama_name       lamaName,
             L.src           lsrc
@@ -48,9 +49,9 @@
 
     <insert id="insertUser">
         INSERT INTO t_user (id, name, fa_name, phone, src, password, salt, sex, status, province, area, sign,
-                            email, register_time, last_login_time, lama_id)
+                            email, register_time, last_login_time, lama_id, login_record)
         VALUES (#{id}, #{name}, #{faName}, #{phone}, #{src}, #{password}, #{salt}, #{sex}, #{status}, #{province},
-                       #{area}, #{sign}, #{email}, #{registerTime}, #{lastLoginTime}, #{lama})
+                       #{area}, #{sign}, #{email}, #{registerTime}, #{lastLoginTime}, #{lama}, #{loginRecord})
     </insert>
 
     <update id="updateUser">

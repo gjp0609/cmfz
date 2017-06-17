@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,5 +38,22 @@ public class UserServiceImpl implements UserService {
     public void modifyUser(User user) {
         int i = dao.updateUser(user);
         if (i == 0) throw new RuntimeException("modify user error");
+    }
+
+    public List<Integer> getChart1() {
+        List<User> userList = dao.selectUser(new User(), new Page(1, 100));
+        String[] record = new String[userList.size()];
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int j = 0; j < 52; j++) {
+            int k = 0;
+            // 获得本周的
+            for (int i = 0; i < userList.size(); i++) {
+                record[i] = userList.get(i).getLoginRecord();
+                char c = record[i].charAt(j);
+                k += c - '0';
+            }
+            list.add(k);
+        }
+        return list;
     }
 }

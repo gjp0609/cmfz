@@ -42,4 +42,13 @@ class CommonTest {
             i++
         }
     }
+
+    @Test
+    fun getRandom() {
+        var i = 1
+        while (i != 52) {
+            print((Math.random() * 7).toInt() + 1)
+            i++
+        }
+    }
 }

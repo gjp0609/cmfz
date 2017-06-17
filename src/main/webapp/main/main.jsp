@@ -28,8 +28,9 @@
             src="<c:url value="/main/article/ueditor/ueditor.all.min.js"/>"></script>
     <script type="text/javascript" charset="utf-8"
             src="<c:url value="/main/article/ueditor/lang/zh-cn/zh-cn.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/echarts.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/china.js"/>"></script>
     <script type="text/javascript">
-
         // menu --------------------------------------------------------------
         $(function () {
             // get all menus

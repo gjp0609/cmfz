@@ -244,7 +244,11 @@
       <Position>16</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <key id="72" parent="19" name="PRIMARY">
+    <column id="72" parent="19" name="login_record">
+      <Position>17</Position>
+      <DataType>varchar(52)|0</DataType>
+    </column>
+    <key id="73" parent="19" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
