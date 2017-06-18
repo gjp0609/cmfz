@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -22,9 +21,9 @@ public class TestString {
 
     @Test
     public void getStr() {
-        byte[] bts = new byte[52];
-        String s = Arrays.toString(bts);
-        System.out.println(s);
+        String field = "id";
+        String methodName = "get" + field.substring(0, 1).toUpperCase() + field.substring(1);
+        System.out.println(methodName);
     }
 
     @Test
@@ -44,7 +43,7 @@ public class TestString {
             // 将标题名转换为对应的get方法名  id --> getId   name --> getName
             String methodName = "get" + (char) (s.charAt(0) - 'a' + 'A') + s.substring(1);
             for (Method method : methods) {
-                // 如果方法名对应则执行方法
+                // 如果方法名对应则执行方法123
                 if (method.getName().equals(methodName)) {
                     // 得到结果
                     System.out.println(method.invoke(user));
@@ -52,7 +51,7 @@ public class TestString {
                     Class<?> type = method.getReturnType();
                     // 如果为日期类型，则自定义格式
                     if (type.newInstance() instanceof Date) {
-                        //System.out.println(true);
+                        System.out.println(true);
                     }
                 }
             }

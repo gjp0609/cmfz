@@ -27,13 +27,13 @@ To change this template use File | Settings | File Templates.
         fitColumns: true,
         singleSelect: true,
         pagination: true,
-        pageSize: 9,
+        pageSize: 4,
         nowrap: false,
-        pageList: [6, 9, 15],
+        pageList: [4, 8, 12],
         columns: [[
             {field: 'id', title: '编号', width: 120, align: "center"},
             {field: 'createUsername', title: '操作用户名', width: 45, align: "center"},
-            {field: 'createTime', title: '时间', width: 60, align: "center"},
+            {field: 'createTime', title: '时间', width: 60, align: "center", sortable: true},
             {field: 'content', title: '详细内容', width: 200},
             {field: 'action', title: '类型', width: 40, align: "center"}
         ]]

@@ -25,8 +25,8 @@
     $(function () {
         $('#slide_image_datagrid').datagrid({
             pagination: true,
-            pageSize: 6,
-            pageList: [3, 6, 9],
+            pageSize: 9,
+            pageList: [4, 9, 16],
             remoteSort: false,
             singleSelect: true,
             nowrap: false,
@@ -53,13 +53,12 @@
                                     timeout: 3000,
                                     showType: "slide"
                                 });
-                                $("#slide_image_add_form").submit();
                                 $("#slide_image_add_form").form({
                                     success: function () {
                                         $("#slideImageEditDialog").dialog("close");
                                         $('#slide_image_datagrid').datagrid("load");
                                     }
-                                });
+                                }).submit();
                             }
                         }, {
                             text: '关闭',
@@ -110,8 +109,7 @@
             buttons: [{
                 text: '保存',
                 handler: function () {
-                    $("#slide_image_edit_form").submit();
-                    $("#slide_image_edit_form").form({
+                    $("#slide_image_edit_form").submit().form({
                         success: function () {
                             $.messager.show({
                                 title: "保存成功",

@@ -4,6 +4,7 @@ import com.baizhi.entity.DataDTO;
 import com.baizhi.entity.Page;
 import com.baizhi.entity.User;
 import com.baizhi.service.UserService;
+import com.baizhi.utils.MyUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.http.HttpHeaders;
@@ -18,6 +19,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.net.URLEncoder;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,6 +65,7 @@ public class UserController {
         return service.getChart1();
     }
 
+
     @RequestMapping("/getAllData")
     public ResponseEntity<byte[]> getAllData(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HSSFWorkbook allDataExcel = service.getAllDataExcel();
@@ -72,5 +76,23 @@ public class UserController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf("application/vnd.ms-excel"));
         return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+    }
+
+    @RequestMapping("/customExport")
+    @ResponseBody
+    public void customExport(String text, String[] values, HttpServletResponse response) {
+        // 编号, 姓名, 真实姓名
+        String[] strings = text.split(",");
+        // id,username, realname
+        try {
+            HSSFWorkbook workbook = service.getCustomExcel(strings, values);
+            response.setHeader("content-disposition", "attachment;filename="
+                    + URLEncoder.encode("用户信息", "utf-8") + MyUtils.fmtDate(new Date())
+                    + ".xls");
+            response.setContentType("application/vnd.ms-excel");
+            workbook.write(response.getOutputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
