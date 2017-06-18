@@ -259,6 +259,12 @@
             <version>${kotlin.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>3.16</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>cmfz</finalName>

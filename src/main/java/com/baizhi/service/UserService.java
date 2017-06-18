@@ -2,6 +2,7 @@ package com.baizhi.service;
 
 import com.baizhi.entity.Page;
 import com.baizhi.entity.User;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.util.List;
 
@@ -17,5 +18,9 @@ public interface UserService {
     public void modifyUser(User user);
 
     public List<Integer> getChart1();
+
+    public HSSFWorkbook getAllDataExcel();
+
+    public HSSFWorkbook getCustomExcel(String[] titles, String[] tits) throws Exception;
 
 }

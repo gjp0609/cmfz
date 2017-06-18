@@ -95,5 +95,8 @@
     <orderEntry type="library" name="Maven: cn.songxinqiang:com.baidu.ueditor:1.1.2-offical" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20160212" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-maven-allopen:1.1.2-4" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi-scratchpad:3.16" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi:3.16" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
   </component>
 </module>
