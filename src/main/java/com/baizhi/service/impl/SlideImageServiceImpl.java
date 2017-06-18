@@ -4,7 +4,7 @@ import com.baizhi.dao.SlideImageDao;
 import com.baizhi.entity.Page;
 import com.baizhi.entity.SlideImage;
 import com.baizhi.service.SlideImageService;
-import com.baizhi.utils.SecurityUtils;
+import com.baizhi.utils.MyUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +42,7 @@ public class SlideImageServiceImpl implements SlideImageService {
     }
 
     public void addSlideImage(SlideImage slideImage) {
-        slideImage.setId(SecurityUtils.getUUID());
+        slideImage.setId(MyUtils.getUUID());
         int i = dao.insertSlideImage(slideImage);
         if (i == 0) throw new RuntimeException("add slide image fail");
     }

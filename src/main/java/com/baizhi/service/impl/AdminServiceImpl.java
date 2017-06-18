@@ -3,7 +3,7 @@ package com.baizhi.service.impl;
 import com.baizhi.dao.AdminDao;
 import com.baizhi.entity.Admin;
 import com.baizhi.service.AdminService;
-import com.baizhi.utils.SecurityUtils;
+import com.baizhi.utils.MyUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +26,7 @@ public class AdminServiceImpl implements AdminService {
         if (admin.getUsername() == null) throw new RuntimeException("username is null");
         Admin dbAdmin = dao.selectAdmin(admin);
         if (dbAdmin == null) throw new RuntimeException("user not exists");
-        String md5 = SecurityUtils.getMD5(admin.getPassword() + dbAdmin.getSalt());
+        String md5 = MyUtils.getMD5(admin.getPassword() + dbAdmin.getSalt());
         if (!md5.equals(dbAdmin.getPassword())) throw new RuntimeException("password is incorrect");
         return dbAdmin;
     }
@@ -43,8 +43,8 @@ public class AdminServiceImpl implements AdminService {
         if (admin.getPassword() == null) throw new RuntimeException("admin to update password is empty");
         Admin dbAdmin = dao.selectAdmin(admin);
         if (dbAdmin == null) throw new RuntimeException("user not exists");
-        String salt = SecurityUtils.getRandomCode(10);
-        String newPwd = SecurityUtils.getMD5(admin.getPassword() + salt);
+        String salt = MyUtils.getRandomCode(10);
+        String newPwd = MyUtils.getMD5(admin.getPassword() + salt);
         dbAdmin.setSalt(salt);
         dbAdmin.setPassword(newPwd);
         int i = dao.updateAdmin(dbAdmin);

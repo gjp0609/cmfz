@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.LogDao">
+
+
+    <select id="selectLog" resultType="com.baizhi.entity.Log">
+        SELECT
+            id,
+            create_username createUsername,
+            create_time     createTime,
+            content,
+            action
+        FROM t_log
+        LIMIT ${page.firstRow}, ${page.pageSize}
+    </select>
+    <!--<where>-->
+    <!--<if test="log.id!=null">L.id = #{log.id}</if>-->
+    <!--</where>-->
+
+    <select id="selectTotalRows" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM cmfz.t_log
+    </select>
+
+    <insert id="insertLog">
+        INSERT INTO cmfz.t_log (id, create_username, create_time, content, action)
+        VALUES (#{id}, #{createUsername}, #{createTime}, #{content}, #{action})
+    </insert>
+</mapper>

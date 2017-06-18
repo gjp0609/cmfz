@@ -2,7 +2,7 @@ package dao
 
 import com.baizhi.dao.AdminDao
 import com.baizhi.entity.Admin
-import com.baizhi.utils.SecurityUtils
+import com.baizhi.utils.MyUtils
 import org.junit.Test
 import org.springframework.context.support.ClassPathXmlApplicationContext
 import java.util.*
@@ -28,8 +28,8 @@ class AdminDaoTest {
         admin.id = UUID.randomUUID().toString().replace("-", "")
         admin.username = "你好"
         admin.realName = "GJP"
-        admin.salt = SecurityUtils.getRandomCode(10)
-        admin.password = SecurityUtils.getMD5("123123" + admin.salt)
+        admin.salt = MyUtils.getRandomCode(10)
+        admin.password = MyUtils.getMD5("123123" + admin.salt)
         val i = dao.insertAdmin(admin)
         println("$i $admin")
     }

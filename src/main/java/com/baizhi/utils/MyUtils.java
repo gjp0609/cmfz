@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
@@ -11,7 +13,7 @@ import java.util.UUID;
  * security utils
  * Created by gjp06 on 17.4.1.
  */
-public class SecurityUtils {
+public class MyUtils {
 
     private static final String SRC = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     private static final String[] fonts = {"Chiller", "Mistral"};
@@ -116,5 +118,10 @@ public class SecurityUtils {
         UUID uuid = UUID.randomUUID();
         String s = uuid.toString();
         return s.replace("-", "");
+    }
+
+    public static String fmtDate(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        return simpleDateFormat.format(date);
     }
 }

@@ -1,6 +1,6 @@
 package com.baizhi.controller;
 
-import com.baizhi.utils.SecurityUtils;
+import com.baizhi.utils.MyUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,9 +21,9 @@ public class ValidateCodeController {
     @RequestMapping("/getValidateImg")
     @ResponseBody
     public void getValidateImg(HttpServletResponse response, HttpSession session) throws IOException {
-        String randomCode = SecurityUtils.getRandomCode(4);
+        String randomCode = MyUtils.getRandomCode(4);
         session.setAttribute("vcode", randomCode);
-        BufferedImage verifyImg = SecurityUtils.getVerifyImg(randomCode, 40, 90);
+        BufferedImage verifyImg = MyUtils.getVerifyImg(randomCode, 40, 90);
         ImageIO.write(verifyImg, "png", response.getOutputStream());
     }
 

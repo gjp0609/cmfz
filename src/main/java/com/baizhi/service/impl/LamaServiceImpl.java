@@ -4,7 +4,7 @@ import com.baizhi.dao.LamaDao;
 import com.baizhi.entity.Lama;
 import com.baizhi.entity.Page;
 import com.baizhi.service.LamaService;
-import com.baizhi.utils.SecurityUtils;
+import com.baizhi.utils.MyUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class LamaServiceImpl implements LamaService {
     }
 
     public void addLama(Lama lama) {
-        String uuid = SecurityUtils.getUUID();
+        String uuid = MyUtils.getUUID();
         lama.setId(uuid);
         int i = dao.insertLama(lama);
         if (i == 0) throw new RuntimeException("add lama fail");

@@ -4,7 +4,7 @@ import com.baizhi.dao.ArticleDao;
 import com.baizhi.entity.Article;
 import com.baizhi.entity.Page;
 import com.baizhi.service.ArticleService;
-import com.baizhi.utils.SecurityUtils;
+import com.baizhi.utils.MyUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +39,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     public void addArticle(Article article) {
-        String uuid = SecurityUtils.getUUID();
+        String uuid = MyUtils.getUUID();
         article.setId(uuid);
         int i = dao.insertArticle(article);
         if (i == 0) throw new RuntimeException("add article fail");

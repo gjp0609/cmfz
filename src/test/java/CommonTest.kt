@@ -1,4 +1,4 @@
-import com.baizhi.utils.SecurityUtils
+import com.baizhi.utils.MyUtils
 import org.junit.Test
 import java.net.URLDecoder
 import java.net.URLEncoder
@@ -20,7 +20,7 @@ class CommonTest {
     @Test
     fun md5() {
         val pwd = "123123"
-        val md5 = SecurityUtils.getMD5(pwd)
+        val md5 = MyUtils.getMD5(pwd)
         println(md5)
     }
 

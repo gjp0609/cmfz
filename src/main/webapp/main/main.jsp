@@ -9,7 +9,7 @@
         Admin admin = (Admin) ad;
         String realName = admin.getRealName();
         pageContext.setAttribute("realName", realName);
-    }
+    } else pageContext.setAttribute("realName", "");
 %>
 <!doctype html>
 <html>
@@ -31,6 +31,9 @@
     <script type="text/javascript" src="<c:url value="/js/echarts.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/china.js"/>"></script>
     <script type="text/javascript">
+
+        if ("${realName}" === "") location.href = "<c:url value="/login.jsp"/>";
+
         // menu --------------------------------------------------------------
         $(function () {
             // get all menus

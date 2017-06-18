@@ -90,7 +90,7 @@ CREATE TABLE t_user
 )
   ENGINE "InnoDB", CHARSET "UTF8";
 
-
+########################################   t_lesson   ######################################
 DROP TABLE IF EXISTS t_lesson;
 CREATE TABLE t_lesson
 (
@@ -99,5 +99,16 @@ CREATE TABLE t_lesson
   type    VARCHAR(1),
   user_id VARCHAR(12) REFERENCES t_user (id),
   PRIMARY KEY (id)
+)
+  ENGINE "InnoDB", CHARSET "UTF8";
+
+########################################   t_log   #########################################
+DROP TABLE IF EXISTS t_log;
+CREATE TABLE t_log (
+  id              VARCHAR(32) NOT NULL,
+  create_username VARCHAR(30),
+  create_time     DATETIME,
+  content         VARCHAR(500),
+  action          VARCHAR(20)
 )
   ENGINE "InnoDB", CHARSET "UTF8";
