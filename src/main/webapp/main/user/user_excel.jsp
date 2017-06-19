@@ -35,13 +35,15 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="customExport()">自定义导出</a>
     </li>
     <li>
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">下载导入模板</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="downloadModel()">下载导入模板</a>
     </li>
     <li>
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">导入数据</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="upload()">导入数据</a>
     </li>
 </ul>
 <div id="dia"></div>
+<div id="user_upload_dialog"></div>
+
 
 <script>
     function exportAll() {
@@ -80,6 +82,43 @@
         });
     }
 
+    function downloadModel() {
+        location.href = "<c:url value="/user/getModel"/>";
+    }
+
+    function upload() {
+
+        $("#user_upload_dialog").dialog({
+            title: '上传',
+            width: 400,
+            height: 200,
+            closed: false,
+            cache: false,
+            href: "<c:url value="/main/user/user_excel_upload.jsp"/>",
+            modal: true,
+            buttons: [{
+                text: '上传',
+                handler: function () {
+                    $("#user_excel_upload").submit().form({
+                        success: function () {
+                            $.messager.show({
+                                title: "上传成功",
+                                msg: "文件已上传。",
+                                timeout: 3000,
+                                showType: "slide"
+                            });
+                            $("#user_upload_dialog").dialog("close");
+                        }
+                    });
+                }
+            }, {
+                text: '关闭',
+                handler: function () {
+                    $("#user_upload_dialog").dialog("close");
+                }
+            }]
+        });
+    }
 </script>
 
 </body>

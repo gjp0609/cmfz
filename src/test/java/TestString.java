@@ -1,11 +1,15 @@
+import com.alibaba.fastjson.JSONReader;
 import com.baizhi.entity.Page;
 import com.baizhi.entity.User;
 import com.baizhi.service.UserService;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,7 +20,7 @@ public class TestString {
     public void test1() {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         UserService service = (UserService) ctx.getBean("userService");
-//        byte[] chart1 = service.getChart1();
+//        byte[] loginChart = service.getLoginChart();
     }
 
     @Test
@@ -56,6 +60,24 @@ public class TestString {
                 }
             }
         }
+    }
+
+    @Test
+    public void t() throws FileNotFoundException {
+        HashMap map;
+        JSONReader reader = new JSONReader(new FileReader("C:\\Files\\Workspaces\\cmfz\\target\\cmfz\\file\\model.json"));
+        reader.startObject();
+        while (reader.hasNext()) {
+            String key = reader.readString();
+            map = reader.readObject(HashMap.class);
+            for (Object o : map.keySet()) {
+                System.out.println(o);
+            }
+            // handle vo ...
+            // 处理vo对象，比方说插入数据库，或者获取值做其他业务逻辑功能
+        }
+        reader.endObject();
+        reader.close();
     }
 
 }

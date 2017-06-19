@@ -3,6 +3,7 @@ package dao
 import com.baizhi.dao.UserDao
 import com.baizhi.entity.Page
 import com.baizhi.entity.User
+import com.baizhi.utils.MyUtils
 import org.junit.Test
 import org.springframework.context.support.ClassPathXmlApplicationContext
 
@@ -39,5 +40,20 @@ class UserDaoTest {
         val user = User()
         user.id = "12ceb3d57ed44ca5ad76dcbf3718a912"
         println(dao.deleteUser(user))
+    }
+
+    @Test
+    fun insertUsers() {
+        val context = ClassPathXmlApplicationContext("spring.xml")
+        val dao = context.getBean("userDao") as UserDao
+        val list = ArrayList<User>()
+        var i = 0
+        while (i < 5) {
+            val user = User()
+            user.id = MyUtils.getUUID()
+            list.add(user)
+            i++
+        }
+        println(dao.insertUsers(list))
     }
 }

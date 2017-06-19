@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 import java.util.*
 
 /**
+ * log
  * Created by gjp06 on 17.6.16.
  */
 @Controller("logController")

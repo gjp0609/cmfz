@@ -14,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
- * admin controller
+ * admin controller 1
  * Created by gjp06 on 17.6.12.
  */
 @Controller("adminController")

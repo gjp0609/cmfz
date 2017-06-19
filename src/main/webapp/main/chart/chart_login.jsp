@@ -25,7 +25,7 @@
     var myChart = echarts.init(document.getElementById('chart_login'));
     //    require.config
 
-    $.get('<c:url value="/user/chart1"/>').done(function (data) {
+    $.get('<c:url value="/user/loginChart"/>').done(function (data) {
         myChart.setOption({
             title: {
                 text: '年度用户登录统计'

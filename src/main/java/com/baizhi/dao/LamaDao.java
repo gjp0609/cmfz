@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
+ * dao
  * Created by gjp06 on 17.6.14.
  */
 public interface LamaDao {

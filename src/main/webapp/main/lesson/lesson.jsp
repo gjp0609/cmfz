@@ -51,6 +51,7 @@ To change this template use File | Settings | File Templates.
         else  return "用户";
     }
     function user_name(value, row, index) {
+        console.log(row);
         if (row.user)
             return row.user.name;
         else return "admin";

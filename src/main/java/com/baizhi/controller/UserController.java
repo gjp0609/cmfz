@@ -14,16 +14,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
+ * user
  * Created by gjp06 on 17.6.16.
  */
 @Controller("userController")
@@ -59,10 +65,17 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/chart1", produces = "application/json")
+    @RequestMapping(value = "/loginChart", produces = "application/json")
     @ResponseBody
-    public List<Integer> chart1() {
-        return service.getChart1();
+    public List<Integer> loginChart() {
+        return service.getLoginChart();
+    }
+
+    @RequestMapping(value = "/mapChart", produces = "application/json")
+    @ResponseBody
+    public Map<String, List<Map<String, Object>>> mapChart() {
+        Map<String, List<Map<String, Object>>> mapChart = service.getMapChart();
+        return mapChart;
     }
 
 
@@ -91,6 +104,34 @@ public class UserController {
                     + ".xls");
             response.setContentType("application/vnd.ms-excel");
             workbook.write(response.getOutputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/getModel")
+    @ResponseBody
+    public void getModel(HttpSession session, HttpServletResponse response) {
+        try {
+            HSSFWorkbook workbook = new HSSFWorkbook(
+                    new FileInputStream(session.getServletContext().getRealPath("\\file\\model.xls")));
+            response.setHeader("content-disposition", "attachment;filename="
+                    + URLEncoder.encode("用户信息", "utf-8") + MyUtils.fmtDate(new Date())
+                    + ".xls");
+            response.setContentType("application/vnd.ms-excel");
+            workbook.write(response.getOutputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/importData")
+    @ResponseBody
+    public void importData(MultipartFile uploadFile) {
+        try {
+            InputStream inputStream = uploadFile.getInputStream();
+            HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
+            service.importData(workbook);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * menu
  * Created by gjp06 on 17.6.12.
  */
 @Controller("menuController")

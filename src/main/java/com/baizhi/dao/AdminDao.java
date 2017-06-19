@@ -37,4 +37,5 @@ public interface AdminDao {
      * @return 1 means success<br/> 0 means fails
      */
     public int deleteAdmin(Admin admin);
+
 }

@@ -120,6 +120,11 @@ public class MyUtils {
         return s.replace("-", "");
     }
 
+    /**
+     *
+     * @param date
+     * @return
+     */
     public static String fmtDate(Date date) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         return simpleDateFormat.format(date);

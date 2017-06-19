@@ -18,28 +18,22 @@
     <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
 </head>
 <body>
-<form id="lesson_edit_form" method="post">
+<form id="user_excel_upload" enctype="multipart/form-data" method="post">
     <table>
         <tr>
-            <td>编号</td>
+            <td>文件</td>
             <td>
-                <input name="id" title="编号" readonly class="easyui-textbox"/></td>
-        </tr>
-        <tr>
-            <td>法名</td>
-            <td>
-                <input name="name" title="名称"
-                       class="easyui-textbox" data-options="required:true,validType:'text'"/></td>
+                <input name="uploadFile" title="文件"
+                       class="easyui-filebox" data-options="buttonText:'选择文件'"/></td>
         </tr>
     </table>
 </form>
 
-
 <script>
     $(function () {
-        $("#lesson_edit_form").form({
-            url: "<c:url value="/lesson/modify"/>"
-        }).form("load", "<c:url value="/lesson/queryOne?id="/>" + lessonId);
+        $("#user_excel_upload").form({
+            url: "<c:url value="/user/importData"/>"
+        });
     });
 </script>
 </body>

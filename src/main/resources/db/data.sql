@@ -4,7 +4,6 @@ FROM t_admin;
 SELECT *
 FROM t_menu;
 
-
 INSERT INTO t_menu (id, text, url, icon, father_id) VALUES
   ('3d186b5934c04559ad9c8baf6d545777', '持明法州之 用户', '', '2012081511913', NULL),
   ('7d89f292e71d49a3a31aa6fbdde96dc3', '持明法州之 轮播图', '', 'images', NULL),

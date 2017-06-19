@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
+ * ad
  * Created by gjp06 on 17.6.13.
  */
 public interface SlideImageDao {

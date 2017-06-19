@@ -14,6 +14,7 @@
     <context:property-placeholder location="classpath:/db/db.properties"/>
 
     <!-- dataSource -->
+    <!--<bean id="ds" class="DataSource">-->
     <bean id="ds" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="${db.driver}"/>
         <property name="url" value="${db.url}"/>
@@ -42,7 +43,7 @@
     <!-- annotation -->
     <tx:annotation-driven transaction-manager="tm"/>
 
-    <!-- aspectj -->
+    <!-- aspectj  -->
     <aop:aspectj-autoproxy/>
 
 </beans>

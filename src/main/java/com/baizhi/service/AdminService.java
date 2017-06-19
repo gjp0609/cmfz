@@ -6,6 +6,7 @@ import com.baizhi.entity.Admin;
  * Created by gjp06 on 17.6.12.
  */
 public interface AdminService {
+    
 
     public Admin queryAdmin(Admin admin);
 

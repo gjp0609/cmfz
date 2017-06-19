@@ -45,7 +45,7 @@
             {field: 'registerTime', title: '注册时间', width: 100},
             {field: 'lastLoginTime', title: '最近登陆', width: 100},
             {field: 'lama.name', title: '上师法名', width: 100, formatter: lama_name},
-            {field: 'operate', title: '操作', width: 60, align: 'center', formatter: user_operate}
+            {field: 'operate', title: '操作', width: 100, align: 'center', formatter: user_operate}
         ]],
         onLoadSuccess: function () {
             $.parser.parse($("a").parent());
@@ -61,7 +61,7 @@
         return row.lama.lamaName;
     }
     function user_img(value, row, index) {
-        return "<img style='height: 40px; width: 50px' src='/img/userImages/" + row.src + "'/>";
+        return "<img style='height: 35px; width: 35px' src='/img/user/" + row.src + "'/>";
     }
 
     function user_edit(id) {

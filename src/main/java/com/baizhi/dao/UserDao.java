@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
+ * asd
  * Created by gjp06 on 17.6.12.
  */
 public interface UserDao {
@@ -28,6 +29,14 @@ public interface UserDao {
     public int insertUser(User user);
 
     /**
+     * insert users to database
+     *
+     * @param userList objects to insert
+     * @return >1 means success<br/> =0 means fails
+     */
+    public int insertUsers(List<User> userList);
+
+    /**
      * update user's username, password or real name
      *
      * @param user new user object
@@ -42,7 +51,7 @@ public interface UserDao {
      * @return 1 means success<br/> 0 means fails
      */
     public int deleteUser(User user);
-    public int selectTotalRows();
 
+    public int selectTotalRows();
 
 }

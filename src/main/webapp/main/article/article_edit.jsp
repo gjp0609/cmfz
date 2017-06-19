@@ -52,7 +52,7 @@
         <tr>
             <td>文章作者：</td>
             <td>
-                <input id="cc" title="作者" name="lama.id" value="">
+                <input id="cc_edit" title="作者" name="lama.id" value="">
             </td>
         </tr>
         <tr>
@@ -85,7 +85,7 @@
     UE.delEditor("edit_editor");
 
     editor = UE.getEditor('edit_editor');
-    $("#cc").combobox({
+    $("#cc_edit").combobox({
         url: "<c:url value="/lama/getList"/>",
         valueField: 'id',
         textField: 'lamaName'
