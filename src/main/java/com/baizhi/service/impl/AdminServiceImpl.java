@@ -21,6 +21,11 @@ public class AdminServiceImpl implements AdminService {
     private AdminDao dao;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public Admin queryOne(Admin admin) {
+        return dao.selectAdmin(admin);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Admin queryAdmin(Admin admin) {
         if (admin == null) throw new RuntimeException("admin to query is empty");
         if (admin.getUsername() == null) throw new RuntimeException("username is null");
@@ -37,12 +42,14 @@ public class AdminServiceImpl implements AdminService {
         if (i == 0) throw new RuntimeException("add admin fail");
     }
 
-    public void modifyAdmin(Admin admin) {
+    public void modifyAdmin(Admin admin, String oldPassword) {
         if (admin == null) throw new RuntimeException("admin to update is empty");
         if (admin.getUsername() == null) throw new RuntimeException("admin to update name is empty");
         if (admin.getPassword() == null) throw new RuntimeException("admin to update password is empty");
         Admin dbAdmin = dao.selectAdmin(admin);
         if (dbAdmin == null) throw new RuntimeException("user not exists");
+        if (!MyUtils.getMD5(oldPassword + dbAdmin.getSalt()).equals(dbAdmin.getPassword()))
+            throw new RuntimeException("your old password id incorrect");
         String salt = MyUtils.getRandomCode(10);
         String newPwd = MyUtils.getMD5(admin.getPassword() + salt);
         dbAdmin.setSalt(salt);

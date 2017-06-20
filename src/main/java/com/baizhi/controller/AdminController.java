@@ -51,20 +51,35 @@ public class AdminController {
         return msg;
     }
 
+    @RequestMapping("/queryOne")
+    @ResponseBody
+    public Admin queryOne(HttpSession session) {
+        Object o = session.getAttribute("admin");
+        Admin admin = (Admin) o;
+        return service.queryOne(admin);
+    }
+
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("admin");
         return "redirect:/login.jsp";
     }
 
-    @RequestMapping("/changePassword")
+    @RequestMapping(value = "/changePassword", produces = "text/plain;charset=utf-8")
     @ResponseBody
-    public String changePassword(Admin admin) {
+    public String changePassword(Admin admin, String oldPassword) {
+        String message = "修改失败";
         if (admin != null && admin.getUsername() != null) {
-            service.modifyAdmin(admin);
+            try {
+                service.modifyAdmin(admin, oldPassword);
+            } catch (Exception e) {
+                message = e.getMessage();
+                System.out.println(message);
+                return message;
+            }
             return "修改成功";
         }
-        return "修改失败";
+        return message;
     }
 
 }

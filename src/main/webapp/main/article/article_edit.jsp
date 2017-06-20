@@ -20,7 +20,7 @@
     <script type="text/javascript" charset="utf-8"
             src="<c:url value="/main/article/ueditor/ueditor.config.js"/>"></script>
     <script type="text/javascript" charset="utf-8"
-            src="<c:url value="/main/article/ueditor/ueditor.all.min.js"/>"></script>
+            src="<c:url value="/main/article/ueditor/ueditor.all.js"/>"></script>
     <script type="text/javascript" charset="utf-8"
             src="<c:url value="/main/article/ueditor/lang/zh-cn/zh-cn.js"/>"></script>
 
@@ -38,27 +38,27 @@
         <tr>
             <td>文章编号：</td>
             <td>
-                <input name="id" title="" readonly
+                <input name="id" title="" readonly value="正在加载"
                        class="easyui-textbox" style="width:300px">
             </td>
         </tr>
         <tr>
             <td>文章标题：</td>
             <td>
-                <input name="title" title="文章标题"
+                <input name="title" title="文章标题" value="请稍等。。。"
                        class="easyui-textbox" style="width:300px">
             </td>
         </tr>
         <tr>
             <td>文章作者：</td>
             <td>
-                <input id="cc_edit" title="作者" name="lama.id" value="">
+                <input id="edit_cc" title="作者" name="lama.id" value="">
             </td>
         </tr>
         <tr>
             <td>文章状态：</td>
             <td>
-                <input id="qwe" name="status" title="是否展示"
+                <input name="status" title="是否展示"
                        class="easyui-switchbutton" data-options="onText:'展示',offText:'不展示',width:80">
             </td>
         </tr>
@@ -72,49 +72,54 @@
             </td>
         </tr>
         <tr>
-            <td><a id="submit" href="javascript:void(0)" class="easyui-linkbutton">创建文章</a></td>
-            <td><a id="reset" href="javascript:void(0)" class="easyui-linkbutton">全部重置</a></td>
+            <td><a id="edit_submit" href="javascript:void(0)" class="easyui-linkbutton">确定修改</a></td>
+            <td><a id="edit_reset" href="javascript:void(0)" class="easyui-linkbutton">全部重置</a></td>
         </tr>
     </table>
 
 </form>
 
 <script type="text/javascript">
-    console.log(new Date().getTime());
 
-    UE.delEditor("edit_editor");
+    $(function () {
+        UE.delEditor("edit_editor");
+        edit_editor = UE.getEditor('edit_editor');
+        $("#edit_cc").combobox({
+            url: "<c:url value="/lama/getList"/>",
+            valueField: 'id',
+            textField: 'lamaName'
+        });
 
-    editor = UE.getEditor('edit_editor');
-    $("#cc_edit").combobox({
-        url: "<c:url value="/lama/getList"/>",
-        valueField: 'id',
-        textField: 'lamaName'
+        setTimeout(function () {
+            $("#article_edit_form").form({
+                url: "<c:url value="/article/modify"/>",
+                success: function () {
+                    $.messager.show({
+                        title: "保存成功",
+                        msg: "修改已完成。",
+                        timeout: 3000,
+                        showType: "slide"
+                    });
+                }, onLoadSuccess: function (art) {
+                    UE.getEditor('edit_editor').setContent(art.content);
+                }
+            }).form("load", "<c:url value="/article/queryOne?id="/>" + articleId);
+        }, 3000);
+
+
+        $("#edit_submit").click(function () {
+            $("#article_edit_form").submit();
+            $("#article_dialog").dialog("close");
+            $("#article_data_grid").datagrid("load");
+        });
+
+        $("#edit_reset").click(function () {
+            edit_editor.setContent("");
+            $("#article_edit_form").form("reset");
+        });
+
     });
 
-    setTimeout(function () {
-        $("#article_edit_form").form({
-            url: "<c:url value="/article/modify"/>",
-            success: function () {
-                $.messager.show({
-                    title: "保存成功",
-                    msg: "修改已完成。",
-                    timeout: 3000,
-                    showType: "slide"
-                });
-            }, onLoadSuccess: function (art) {
-                UE.getEditor('edit_editor').setContent(art.content);
-            }
-        }).form("load", "<c:url value="/article/queryOne?id="/>" + articleId);
-    }, 3000);
-
-
-    $("#submit").click(function () {
-        $("#article_edit_form").submit();
-    });
-
-    $("#reset").click(function () {
-        $("#article_edit_form").form("reset");
-    });
 </script>
 
 </body>

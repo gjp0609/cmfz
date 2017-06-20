@@ -23,10 +23,10 @@
     <update id="updateAdmin">
         UPDATE cmfz.t_admin
         <set>
-            <if test="username!=null">name = #{username}</if>
-            <if test="realName!=null">real_name = #{realName}</if>
-            <if test="password!=null">password = #{password}</if>
-            <if test="salt!=null">salt = #{salt}</if>
+            <if test="username!=null">name = #{username},</if>
+            <if test="realName!=null">real_name = #{realName},</if>
+            <if test="password!=null">password = #{password},</if>
+            <if test="salt!=null">salt = #{salt},</if>
         </set>
         <where>id = #{id}</where>
     </update>

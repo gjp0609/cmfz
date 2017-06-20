@@ -21,6 +21,7 @@
 <table id="article_data_grid" style="height: 100%"></table>
 <div id="article_dialog"></div>
 <div id="article_detail"></div>
+<div id="article_wait_dialog"></div>
 <script>
 
     $("#article_data_grid").datagrid({

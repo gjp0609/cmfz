@@ -4,6 +4,7 @@ import com.baizhi.dao.LessonDao
 import com.baizhi.entity.Lesson
 import com.baizhi.entity.Page
 import com.baizhi.service.LessonService
+import com.baizhi.utils.MyUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Propagation
@@ -34,6 +35,7 @@ open class LessonServiceImpl() : LessonService {
     }
 
     override fun addLesson(lesson: Lesson) {
+        lesson.id = MyUtils.getUUID()
         val i = dao.insertLesson(lesson)
         if (i == 0) throw RuntimeException("add lesson fail")
     }

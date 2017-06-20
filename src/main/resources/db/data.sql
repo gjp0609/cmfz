@@ -52,7 +52,6 @@ SELECT
 FROM cmfz.t_article A LEFT JOIN cmfz.t_lama L ON A.author_id = L.id;
 
 
-
 SELECT
   U.id            uid,
   name,
@@ -73,3 +72,16 @@ SELECT
   lama_name       lamaName,
   L.src           lsrc
 FROM cmfz.t_user U LEFT JOIN cmfz.t_lama L ON U.lama_id = L.id;
+
+
+SELECT
+  L.id   lid,
+  L.name name,
+  type,
+  U.id   uid,
+  U.name uname
+FROM cmfz.t_lesson L LEFT JOIN t_user U ON L.user_id = U.id;
+
+UPDATE cmfz.t_article
+SET update_time = sysdate()
+WHERE id = 'c2bffa11fc5943b683db630d8e2c9801';

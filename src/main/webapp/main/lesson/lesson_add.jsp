@@ -18,13 +18,8 @@
     <script type="text/javascript" src="<c:url value="/js/easyui-lang-zh_CN.js"/>"></script>
 </head>
 <body>
-<form id="lesson_edit_form" method="post">
+<form id="lesson_add_form" method="post">
     <table>
-        <tr>
-            <td>编号</td>
-            <td>
-                <input name="id" title="编号" readonly class="easyui-textbox"/></td>
-        </tr>
         <tr>
             <td>功课名称</td>
             <td>
@@ -37,9 +32,9 @@
 
 <script>
     $(function () {
-        $("#lesson_edit_form").form({
-            url: "<c:url value="/lesson/modify"/>"
-        }).form("load", "<c:url value="/lesson/queryOne?id="/>" + lessonId);
+        $("#lesson_add_form").form({
+            url: "<c:url value="/lesson/add"/>"
+        });
     });
 </script>
 </body>

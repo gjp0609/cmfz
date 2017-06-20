@@ -25,9 +25,6 @@ open class LessonController {
     fun queryAll(page: Int, rows: Int): DataDTO<Lesson> {
         val p = Page(page, rows)
         val lessonList = service.queryAllLesson(p)
-        for (lesson in lessonList) {
-            println(lesson)
-        }
         val lessonDataDTO = DataDTO<Lesson>()
         lessonDataDTO.total = p.totalRows
         lessonDataDTO.rows = lessonList

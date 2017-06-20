@@ -68,10 +68,10 @@
             }
         }],
         columns: [[
-            {field: 'id', title: '编号', width: 100},
-            {field: 'lamaName', title: '法名', width: 100},
-            {field: 'src', title: '头像文件名', width: 100, align: 'right'},
-            {field: 'img', title: '头像展示', width: 100, align: 'right', formatter: lama_img},
+            {field: 'id', title: '编号', width: 120, align: 'center'},
+            {field: 'lamaName', title: '法名', width: 100, align: 'center'},
+            {field: 'src', title: '头像文件名', width: 100, align: 'left'},
+            {field: 'img', title: '头像展示', width: 40, align: 'center', formatter: lama_img},
             {field: 'operate', title: '操作', width: 60, align: 'center', formatter: lama_operate}
         ]],
         onLoadSuccess: function () {
@@ -85,7 +85,7 @@
     }
 
     function lama_img(value, row, index) {
-        return "<img style='height: 50px' src='/img/lamaImages/" + row.src + "'/>";
+        return "<img style='height: 80px;width: 80px' src='/img/lamaImages/" + row.src + "'/>";
     }
 
     function lama_edit(id) {

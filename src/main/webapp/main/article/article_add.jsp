@@ -20,7 +20,7 @@
     <script type="text/javascript" charset="utf-8"
             src="<c:url value="/main/article/ueditor/ueditor.config.js"/>"></script>
     <script type="text/javascript" charset="utf-8"
-            src="<c:url value="/main/article/ueditor/ueditor.all.min.js"/>"></script>
+            src="<c:url value="/main/article/ueditor/ueditor.all.js"/>"></script>
     <script type="text/javascript" charset="utf-8"
             src="<c:url value="/main/article/ueditor/lang/zh-cn/zh-cn.js"/>"></script>
 
@@ -45,13 +45,13 @@
         <tr>
             <td>文章作者：</td>
             <td>
-                <input id="cc" title="作者" name="lama.id" value="">
+                <input id="add_cc" title="作者" name="lama.id" value="">
             </td>
         </tr>
         <tr>
             <td>文章状态：</td>
             <td>
-                <input id="qwe" name="status" title="是否展示"
+                <input name="status" title="是否展示"
                        class="easyui-switchbutton" data-options="onText:'展示',offText:'不展示',width:80">
             </td>
         </tr>
@@ -65,8 +65,8 @@
             </td>
         </tr>
         <tr>
-            <td><a id="submit" href="javascript:void(0)" class="easyui-linkbutton">创建文章</a></td>
-            <td><a id="reset" href="javascript:void(0)" class="easyui-linkbutton">全部重置</a></td>
+            <td><a id="add_submit" href="javascript:void(0)" class="easyui-linkbutton">创建文章</a></td>
+            <td><a id="add_reset" href="javascript:void(0)" class="easyui-linkbutton">全部重置</a></td>
         </tr>
     </table>
 
@@ -74,14 +74,14 @@
 
 <script type="text/javascript">
     UE.delEditor("add_editor");
-    var editor = UE.getEditor('add_editor');
-    $("#cc").combobox({
+    add_editor = UE.getEditor('add_editor');
+    $("#add_cc").combobox({
         url: "<c:url value="/lama/getList"/>",
         valueField: 'id',
         textField: 'lamaName'
     });
 
-    $("#submit").click(function () {
+    $("#add_submit").click(function () {
         $("#article_add_form").form({
             url: "<c:url value="/article/add"/>",
             success: function () {
@@ -93,6 +93,10 @@
                 });
             }
         }).submit();
+
+        $("#edit_reset").click(function () {
+            $("#article_edit_form").form("reset");
+        });
     });
 
 

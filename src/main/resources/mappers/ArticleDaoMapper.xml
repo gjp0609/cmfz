@@ -48,7 +48,7 @@
             <if test="status!=null">status = #{status},</if>
             <if test="content!=null">content = #{content},</if>
             <if test="lama!=null">
-                <if test="lama.id!=null">author_id = #{lama.id}</if>
+                <if test="lama.id!=null">author_id = #{lama.id},</if>
             </if>
             update_time = sysdate()
         </set>

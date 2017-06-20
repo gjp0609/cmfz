@@ -38,8 +38,43 @@ To change this template use File | Settings | File Templates.
         ]],
         onLoadSuccess: function () {
             $.parser.parse($("a").parent());
-        }
-
+        }, toolbar: [{
+            text: "添加",
+            iconCls: 'icon-add',
+            handler: function () {
+                $("#lesson_dialog").dialog({
+                    title: '添加',
+                    width: 400,
+                    height: 200,
+                    closed: false,
+                    cache: false,
+                    href: "<c:url value="/main/lesson/lesson_add.jsp"/>",
+                    modal: true,
+                    buttons: [{
+                        text: '保存',
+                        handler: function () {
+                            $("#lesson_add_form").submit().form({
+                                success: function () {
+                                    $.messager.show({
+                                        title: "添加成功",
+                                        msg: "功课已添加",
+                                        timeout: 3000,
+                                        showType: "slide"
+                                    });
+                                    $("#lesson_dialog").dialog("close");
+                                    $('#lesson_data_grid').datagrid("load");
+                                }
+                            });
+                        }
+                    }, {
+                        text: '关闭',
+                        handler: function () {
+                            $("#lesson_dialog").dialog("close");
+                        }
+                    }]
+                });
+            }
+        }]
     });
     function lesson_operate(value, row, index) {
         return "<a href=\"javascript:void(0)\" onclick=\"lesson_edit('" + row.id + "')\" " +

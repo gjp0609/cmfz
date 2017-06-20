@@ -25,7 +25,7 @@
     <script type="text/javascript" charset="utf-8"
             src="<c:url value="/main/article/ueditor/ueditor.config.js"/>"></script>
     <script type="text/javascript" charset="utf-8"
-            src="<c:url value="/main/article/ueditor/ueditor.all.min.js"/>"></script>
+            src="<c:url value="/main/article/ueditor/ueditor.all.js"/>"></script>
     <script type="text/javascript" charset="utf-8"
             src="<c:url value="/main/article/ueditor/lang/zh-cn/zh-cn.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/echarts.js"/>"></script>
@@ -75,6 +75,18 @@
             }
 
         }
+
+        function changePassword() {
+            $("#admin_chPwd").dialog({
+                title: '修改密码',
+                width: 400,
+                height: 200,
+                closed: false,
+                cache: false,
+                href: "<c:url value="/main/changePassword.jsp"/>",
+                modal: true
+            });
+        }
     </script>
 
 </head>
@@ -85,7 +97,8 @@
     </div>
     <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">
         欢迎您:${realName}
-        &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>
+        &nbsp;<a href="javascript:void(0)" onclick="changePassword()" class="easyui-linkbutton"
+                 data-options="iconCls:'icon-edit'">修改密码</a>
         &nbsp;&nbsp;<a href="<c:url value="/admin/logout"/>" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a>
     </div>
 </div>
@@ -105,6 +118,6 @@
              style="background-image:url(image/shouye.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
     </div>
 </div>
-
+<div id="admin_chPwd"></div>
 </body>
 </html>

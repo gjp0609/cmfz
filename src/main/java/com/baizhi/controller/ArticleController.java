@@ -62,6 +62,7 @@ public class ArticleController {
     @RequestMapping("/modify")
     @ResponseBody
     public void modify(Article article) {
+//        System.out.println(article);
         service.modifyArticle(article);
     }
 }
