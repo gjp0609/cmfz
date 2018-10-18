@@ -8,40 +8,11 @@
     <name>cmfz Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
-
-    <repositories>
-        <repository>
-            <id>nexus</id>
-            <name>Team Nexus Repository</name>
-            <url>http://192.168.0.4:8081/nexus/content/groups/public</url>
-        </repository>
-        <repository>
-            <id>ali</id>
-            <name>Team Nexus Repository</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus</id>
-            <name>Team Nexus Repository</name>
-            <url>http://192.168.0.4:8081/nexus/content/groups/public</url>
-        </pluginRepository>
-
-        <pluginRepository>
-            <id>ali</id>
-            <name>Team Nexus Repository</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
-
-
     <!--项目全局变量-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- spring版本号 -->
-        <spring.version>3.2.4.RELEASE</spring.version>
+        <spring.version>4.3.16.RELEASE</spring.version>
         <!-- mybatis版本号 -->
         <mybatis.version>3.2.4</mybatis.version>
         <!-- log4j日志文件管理包版本 -->
